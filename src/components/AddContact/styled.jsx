@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 
 export const FormContainer = styled.div`
-  background-color: #b5b5cb;
+  background-color: #e5d9d9;
   padding: 10px;
   border-radius: 8px;
   text-align: center;
+  margin-bottom: 20px;
+  border: 5px solid #8191ab;
 `;
 
 export const Input = styled.input`
@@ -34,13 +36,16 @@ export const FileInputWrapper = styled.div`
 export const FileInputLabel = styled.label`
   display: block;
   margin-bottom: 10px;
-  font-weight: bold;
   cursor: pointer;
-  background-color: red;
-  width: 130px ;
+  background-color: #f44336;
+  color: white;
+  width: 130px;
   padding: 5px;
   border-radius: 4px;
   text-align: center;
+  &:hover {
+    background-color: #333;
+  }
 `;
 
 export const FileInput = styled.input`
@@ -49,8 +54,8 @@ export const FileInput = styled.input`
 
 export const AvatarPreview = styled.img`
   display: block;
-  max-width: 100px;
-  max-height: 100px;
+  width: 100px;
+  height: 100px;
   object-fit: cover;
   margin-left: 10px;
   border-radius: 50%;
@@ -60,6 +65,8 @@ export const ButtonsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
+
+  
 `;
 
 export const Button = styled.button`
@@ -70,8 +77,35 @@ export const Button = styled.button`
   border-radius: 4px;
   cursor: pointer;
   margin-right: 10px;
+  transition: background-color 0.3s ease;
 
   &:last-child {
     margin-right: 0;
   }
+
+  &:hover {
+    background-color: #333;
+  }
+`;
+
+export const AddButton = styled.button`
+  background-color: #417fc2;
+  color: #fff;
+  padding: 10px 20px;
+  border: 5px solid #8191ab; 
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  text-align: center;
+
+  &:hover {
+    background-color: #284461;
+  }
+
+  &:active {
+    background-color: #1a2b3c; /* Change to the color you want when the button is clicked */
+  }
+
 `;

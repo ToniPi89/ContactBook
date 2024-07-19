@@ -7,14 +7,15 @@ import {
   ContactParagraph,
   ContactSpan,
   ContactButtonsContainer,
+  EditButton,
+  DeleteButton,
 } from './styled';
 import ArrowUp from '../../assets/arrow-up.svg';
 import ArrowDown from '../../assets/arrow-down.svg';
 
-const Contact = ({ data }) => {
+const Contact = ({ data, onEdit, onDelete }) => {
   const [showDetails, setShowDetails] = useState(false);
   const [avatarUrl, setAvatarUrl] = useState('');
-
 
   useEffect(() => {
     // Create blob URL for the avatar when component mounts
@@ -37,6 +38,13 @@ const Contact = ({ data }) => {
     setShowDetails(!showDetails);
   };
 
+  const handleDelete = () => {
+    // Confirm deletion before proceeding
+    if (window.confirm('Are you sure you want to delete this contact?')) {
+      onDelete(data.id); // Call the onDelete prop if confirmed
+    }
+  };
+
   return (
     <ContactContainer>
       <ContactHeader onClick={handleToggleDetails}>
@@ -56,6 +64,10 @@ const Contact = ({ data }) => {
           </ContactParagraph>
         </ContactDetails>
       )}
+      <ContactButtonsContainer>
+        <EditButton onClick={onEdit}>Edit</EditButton>
+        <DeleteButton onClick={handleDelete}>Delete</DeleteButton> {/* **Updated handler** */}
+      </ContactButtonsContainer>
     </ContactContainer>
   );
 };

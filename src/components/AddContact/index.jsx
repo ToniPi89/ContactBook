@@ -11,6 +11,7 @@ import {
   AvatarPreview,
   ButtonsWrapper,
   Button,
+  AddButton,
 } from './styled';
 
 const AddContact = ({ onAddContact }) => {
@@ -27,6 +28,9 @@ const AddContact = ({ onAddContact }) => {
     lastName: '',
     phone: '',
   });
+
+  const [isFormVisible, setIsFormVisible] = useState(false);
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -88,6 +92,7 @@ const AddContact = ({ onAddContact }) => {
 
     // Reset form and errors after submission
     resetForm();
+    setIsFormVisible(false);
   };
 
   const resetForm = () => {
@@ -110,6 +115,11 @@ const AddContact = ({ onAddContact }) => {
   };
 
   return (
+    <div>
+      <AddButton onClick={() => setIsFormVisible(!isFormVisible)}>
+        {isFormVisible ? 'Cancel' : 'Add New Contact'}
+      </AddButton>
+      {isFormVisible && (
     <FormContainer>
       <h2>Add New Contact</h2>
       <form onSubmit={handleSubmit}>
@@ -133,6 +143,7 @@ const AddContact = ({ onAddContact }) => {
         />
         {formErrors.lastName && <ErrorText>{formErrors.lastName}</ErrorText>}
        </InputWrapper> 
+       <InputWrapper>
        <Input
           type="text"
           name="address"
@@ -140,6 +151,7 @@ const AddContact = ({ onAddContact }) => {
           value={formData.address}
           onChange={handleInputChange}
         />
+         </InputWrapper> 
         <InputWrapper>
         <Input
           type="text"
@@ -171,6 +183,9 @@ const AddContact = ({ onAddContact }) => {
         </ButtonsWrapper>
       </form>
     </FormContainer>
+          )}
+          </div>
+      
   );
 };
 

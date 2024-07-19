@@ -17,7 +17,7 @@ export const ContactHeader = styled.div`
   align-items: center;
   cursor: pointer;
   font-weight: 700;
-
+  
   &:hover img[alt='caret'] {
     background-color: var(--primary-color-light);
     border-radius: 50%;
@@ -45,10 +45,33 @@ export const ContactAvatar = styled.img`
   object-fit: cover;
   border-radius: 50%;
   background-color: cadetblue;
+  margin-right: 16px;
 `;
 
 export const ContactButtonsContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 24px;
+`;
+
+export const EditDeleteButton = styled.button`
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #333;
+  }
+`;
+
+export const EditButton = styled(EditDeleteButton)`
+  background-color: #4caf50; /* Green */
+`;
+
+export const DeleteButton = styled(EditDeleteButton)`
+  background-color: #f44336; /* Red */
 `;
